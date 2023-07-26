@@ -26,9 +26,13 @@ export default function Todo({ key, todo, deleteTodo, updateTodo, changeTodo }) 
   };
 
   const handleModify = () => {
-    changeTodo({ id, title: modifyTitle, status });
-    console.log(title);
-    setIsReadOnly(!isReadOnly);
+    if (modifyTitle === todo.title) {
+      alert('변경된 내용이 없습니다.');
+      setIsReadOnly((prev) => prev);
+    } else {
+      changeTodo({ id, title: modifyTitle, status });
+      setIsReadOnly((prev) => !prev);
+    }
   };
 
   return (
