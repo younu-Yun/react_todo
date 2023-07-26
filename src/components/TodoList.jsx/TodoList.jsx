@@ -11,13 +11,18 @@ export default function TodoList() {
   const deleteTodo = (deletedTodo) => setTodos(todos.filter((todo) => todo.id !== deletedTodo.id));
   //투두 상태변경
   const updateTodo = (updatedTodo) => setTodos(todos.map((todo) => (todo.id === updatedTodo.id ? updatedTodo : todo)));
+  //투두 수정
+  const changeTodo = (changedTodo) => {
+    console.log(changedTodo);
+    setTodos(todos.map((todo) => (todo.id === changedTodo.id ? changedTodo : todo)));
+  };
 
   return (
     <div className='todoBox'>
       <div className='todoList'>
         <ul>
           {todos.map((todo) => {
-            return <Todo key={todo.id} todo={todo} deleteTodo={deleteTodo} updateTodo={updateTodo} />;
+            return <Todo key={todo.id} todo={todo} deleteTodo={deleteTodo} updateTodo={updateTodo} changeTodo={changeTodo} />;
           })}
         </ul>
       </div>
