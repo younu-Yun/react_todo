@@ -1,29 +1,23 @@
 import React, { useState } from 'react';
 import AddTodo from '../AddTodo/AddTodo';
+import Todo from '../Todo/Todo';
 
 export default function TodoList() {
   const [todos, setTodos] = useState(dafaultTodos);
 
   //투두 추가
   const addTodo = (addedTodo) => setTodos([...todos, addedTodo]);
+  //투두 삭제
+  const deleteTodo = (deletedTodo) => {
+    setTodos(todos.filter((todo) => todo.id !== deletedTodo.id));
+  };
 
   return (
     <div className='todoBox'>
       <div className='todoList'>
         <ul>
           {todos.map((todo) => {
-            const { id, title } = todo;
-            return (
-              <li key={id}>
-                <div>
-                  <input type='checkbox' name={`todo_${id}`} id={`todo_${id}`} />
-                  <label htmlFor={`todo_${id}`}>
-                    <span>{title}</span>
-                  </label>
-                </div>
-                <button>삭제</button>
-              </li>
-            );
+            return <Todo key={todo.id} todo={todo} deleteTodo={deleteTodo} />;
           })}
         </ul>
       </div>
