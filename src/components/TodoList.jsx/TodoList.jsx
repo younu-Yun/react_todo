@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import AddTodo from '../AddTodo/AddTodo';
 
 export default function TodoList() {
   const [todos, setTodos] = useState(dafaultTodos);
+
+  //투두 추가
+  const addTodo = (addedTodo) => setTodos([...todos, addedTodo]);
 
   return (
     <div className='todoBox'>
@@ -23,6 +27,7 @@ export default function TodoList() {
           })}
         </ul>
       </div>
+      <AddTodo addTodo={addTodo} />
     </div>
   );
 }
