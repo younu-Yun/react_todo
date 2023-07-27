@@ -22,7 +22,7 @@ export default function TodoList() {
       <div className='todoList'>
         <ul>
           {todos.map((todo) => {
-            return <Todo key={todo.id} todo={todo} deleteTodo={deleteTodo} updateTodo={updateTodo} changeTodo={changeTodo} />;
+            return <Todo todo={todo} deleteTodo={deleteTodo} updateTodo={updateTodo} changeTodo={changeTodo} />;
           })}
         </ul>
       </div>

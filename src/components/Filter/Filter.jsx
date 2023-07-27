@@ -1,21 +1,22 @@
 import React from 'react';
 
-export default function Filter() {
+export default function Filter({ filters, selectedFilter, onFilterChange }) {
+  const handleChange = (item) => {
+    onFilterChange(item);
+    console.log(item);
+  };
+
   return (
     <nav>
       <ul>
-        <li>
-          <input type='radio' name='filter' id='filter01' />
-          <label htmlFor='filter01'>전체</label>
-        </li>
-        <li>
-          <input type='radio' name='filter' id='filter02' />
-          <label htmlFor='filter02'>진행중</label>
-        </li>
-        <li>
-          <input type='radio' name='filter' id='filter03' />
-          <label htmlFor='filter03'>완료</label>
-        </li>
+        {filters.map((item, idx) => {
+          return (
+            <li key={idx}>
+              <input type='radio' name='filter' id={`filter_${idx}`} defaultChecked={idx === 0 ? true : false} onChange={() => handleChange(item)} />
+              <label htmlFor={`filter_${idx}`}>{item}</label>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

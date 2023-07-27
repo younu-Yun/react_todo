@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Todo({ key, todo, deleteTodo, updateTodo, changeTodo }) {
+export default function Todo({ todo, deleteTodo, updateTodo, changeTodo }) {
   const { id, title, status } = todo;
 
   const [modifyTitle, setModifyTitle] = useState(title);
@@ -36,7 +36,7 @@ export default function Todo({ key, todo, deleteTodo, updateTodo, changeTodo }) 
   };
 
   return (
-    <li key={key}>
+    <li key={`list_${todo.id}`}>
       <div>
         <input type='checkbox' name={`todo_${id}`} id={`todo_${id}`} onChange={handleStatus} />
         <label htmlFor={`todo_${id}`}>
